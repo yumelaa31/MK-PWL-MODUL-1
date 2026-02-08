@@ -2,7 +2,7 @@
 
 Project ini merupakan **project praktikum Pemrograman Web Lanjut** yang dibuat menggunakan **Laravel 12**. Project berfokus pada **integrasi database MySQL** dan **implementasi CRUD dasar (Create, Read, Update, Delete)** pada data Mahasiswa dengan pendekatan MVC (Model–View–Controller).
 
-Pengembangan project ini dilakukan dengan **bantuan AI (GitHub Copilot)** sebagai *referensi pembelajaran*, bukan sebagai pengganti pemahaman mahasiswa.
+Pengembangan project ini dilakukan dengan **bantuan AI (DeepSeek)** sebagai *referensi pembelajaran*, bukan sebagai pengganti pemahaman mahasiswa.
 
 ---
 
@@ -23,7 +23,7 @@ Pengembangan project ini dilakukan dengan **bantuan AI (GitHub Copilot)** sebaga
 * **MySQL**
 * **Blade Template Engine**
 * **Bootstrap 5 (sederhana)**
-* **AI Assistant: GitHub Copilot (sebagai referensi belajar)**
+* **AI Assistant: DeepSeek (sebagai referensi belajar)**
 
 ---
 
@@ -106,7 +106,7 @@ Pengembangan project ini dilakukan dengan **bantuan AI (GitHub Copilot)** sebaga
 
 ---
 
-## 🤖 Log Konsultasi AI (GitHub Copilot)
+## 🤖 Log Konsultasi AI (DeepSeek)
 
 Berikut adalah ringkasan penggunaan AI (GitHub Copilot) selama proses pengerjaan project ini:
 
@@ -119,7 +119,11 @@ Berikut adalah ringkasan penggunaan AI (GitHub Copilot) selama proses pengerjaan
 * Penanganan error *Mass Assignment Exception*
 * Integrasi Bootstrap 5 pada template Blade
 
-### 2️⃣ Contoh Prompt yang Digunakan
+### 2️⃣ Link Chat DeepSeek
+
+🔗 **DeepSeek Chat Log**: [https://chat.deepseek.com](https://chat.deepseek.com)
+
+### 3️⃣ Contoh Prompt yang Digunakan
 
 ```
 Saya sedang belajar Laravel 12.
@@ -132,7 +136,7 @@ Saya mendapatkan error 'Add [nim] to fillable property to allow mass assignment'
 Apa maksud error tersebut dan bagaimana cara memperbaikinya?
 ```
 
-### 3️⃣ Catatan Etika Penggunaan AI
+### 4️⃣ Catatan Etika Penggunaan AI
 
 * AI digunakan sebagai **alat bantu belajar**, bukan untuk menyalin seluruh kode
 * Kode hasil referensi AI dipahami dan diketik ulang secara mandiri
@@ -142,7 +146,7 @@ Apa maksud error tersebut dan bagaimana cara memperbaikinya?
 
 ## 📝 Catatan Akademik
 
-> AI (GitHub Copilot) digunakan sebagai *kopilot pembelajaran*. Seluruh implementasi dilakukan dengan pemahaman mandiri terhadap konsep Laravel, MVC, dan CRUD.
+> AI (DeepSeek) digunakan sebagai *kopilot pembelajaran*. Seluruh implementasi dilakukan dengan pemahaman mandiri terhadap konsep Laravel, MVC, dan CRUD.
 
 ---
 
