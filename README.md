@@ -1,162 +1,128 @@
-# 📘 Laravel 12 – CRUD Mahasiswa
+# 📘 Laravel 12 – Sistem Informasi Akademik (SIAKAD)
 
-Project ini merupakan **project praktikum Pemrograman Web Lanjut** yang dibuat menggunakan **Laravel 12**. Project berfokus pada **integrasi database MySQL** dan **implementasi CRUD dasar (Create, Read, Update, Delete)** pada data Mahasiswa dengan pendekatan MVC (Model–View–Controller).
+Project ini adalah **Sistem Informasi Akademik Sederhana** yang dibangun menggunakan **Laravel 12**. Project ini mencakup manajemen data Mahasiswa dan Mata Kuliah dengan fitur lengkap CRUD, Otentikasi (Login/Register), dan pelaporan sederhana melalui Dashboard.
 
-Pengembangan project ini dilakukan dengan **bantuan AI (DeepSeek)** sebagai *referensi pembelajaran*, bukan sebagai pengganti pemahaman mahasiswa.
+Project ini dikembangkan sebagai bagian dari praktikum **Pemrograman Web Lanjut** dengan fokus pada Clean Code, MVC Pattern, dan Modern UI.
 
 ---
 
-## 🎯 Tujuan Project
+## ✨ Fitur Utama
 
-* Mengonfigurasi koneksi database MySQL di Laravel 12
-* Memahami dan menerapkan Migration
-* Menggunakan Eloquent ORM untuk manipulasi data
-* Mengimplementasikan CRUD dasar pada data Mahasiswa
-* Melatih penggunaan AI secara **etis dan bertanggung jawab** dalam pembelajaran
+### 1. 🔐 Otentikasi & Keamanan
+*   **Login & Register** menggunakan **Laravel Breeze**.
+*   **Custom Middleware** (`IkmiEmailOnly`): Membatasi fitur hapus mahasiswa hanya untuk email berakhiran `@ikmi.ac.id`.
+*   Proteksi Route dengan middleware `auth`.
+
+### 2. 📊 Dashboard Interaktif
+*   Ringkasan total **Mahasiswa**.
+*   Ringkasan total **Mata Kuliah**.
+*   Tampilan modern dengan **Tailwind CSS**.
+
+### 3. 🎓 Manajemen Mahasiswa (CRUD)
+*   Menampilkan daftar mahasiswa dengan pencarian & pagination.
+*   Tambah, Edit, dan Hapus data mahasiswa.
+*   Relasi ke Mata Kuliah (One-to-Many).
+*   Validasi input yang ketat (NIM unik, field wajib isi).
+*   Pencatatan otomatis `user_id` penginput data.
+
+### 4. 📚 Manajemen Mata Kuliah (CRUD)
+*   Kelola data Mata Kuliah (Kode, Nama, SKS, Dosen).
+*   Fitur `Show Details`: Melihat daftar mahasiswa yang mengambil mata kuliah tertentu.
+*   Indikator jumlah mahasiswa per mata kuliah.
 
 ---
 
 ## 🛠️ Teknologi yang Digunakan
 
-* **Laravel 12**
-* **PHP 8.2+**
-* **MySQL**
-* **Blade Template Engine**
-* **Bootstrap 5 (sederhana)**
-* **AI Assistant: DeepSeek (sebagai referensi belajar)**
+*   **Backend**: Laravel 12 (PHP 8.2+)
+*   **Frontend**: Blade Templates + **Tailwind CSS**
+*   **Database**: MySQL
+*   **Auth**: Laravel Breeze
+*   **Tools**: VS Code, Composer, NPM, Laragon/XAMPP
 
 ---
 
-## 📂 Struktur Fitur
+## 🚀 Cara Instalasi
 
-* Konfigurasi database melalui file `.env`
-* Migration tabel `mahasiswas`
-* Model `Mahasiswa`
-* Controller `MahasiswaController` (resource)
-* CRUD Mahasiswa:
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
 
-  * ✅ Tampil Data (Read)
-  * ✅ Tambah Data (Create)
-  * ✅ Edit Data (Update)
-  * ✅ Hapus Data (Delete)
-
----
-
-## 🧭 Alur Aplikasi (Sederhana)
-
-1. User mengakses URL melalui browser
-2. Route memanggil Controller
-3. Controller memproses data menggunakan Model
-4. Data ditampilkan melalui View (Blade)
-5. Data disimpan / diambil dari database MySQL
-
----
-
-## 🚀 Cara Menjalankan Project
-
-1. Clone repository ini:
-
-   ```bash
-   git clone https://github.com/ibraiiian/MK-PWL-modul1.git
-   ```
-
-2. Masuk ke folder project:
-
-   ```bash
-   cd MK-PWL-modul1
-   ```
-
-3. Install dependency:
-
-   ```bash
-   composer install
-   ```
-
-4. Copy file `.env`:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-5. Atur konfigurasi database di file `.env`
-
-6. Generate key:
-
-   ```bash
-   php artisan key:generate
-   ```
-
-7. Jalankan migration:
-
-   ```bash
-   php artisan migrate
-   ```
-
-8. Jalankan server:
-
-   ```bash
-   php artisan serve
-   ```
-
-9. Akses di browser:
-
-   ```
-   http://127.0.0.1:8000/mahasiswa
-   ```
-
----
-
-## 🤖 Log Konsultasi AI (DeepSeek)
-
-Berikut adalah ringkasan penggunaan AI (GitHub Copilot) selama proses pengerjaan project ini:
-
-### 1️⃣ Topik Konsultasi
-
-* Penjelasan struktur folder Laravel 12
-* Cara membuat Migration tabel Mahasiswa
-* Cara mengirim data dari Controller ke View
-* Implementasi CRUD dasar Laravel
-* Penanganan error *Mass Assignment Exception*
-* Integrasi Bootstrap 5 pada template Blade
-
-### 2️⃣ Link Chat DeepSeek
-
-🔗 **DeepSeek Chat Log**: [https://chat.deepseek.com/share/cr0ks2wah90ka5wmhp)
-
-### 3️⃣ Contoh Prompt yang Digunakan
-
-```
-Saya sedang belajar Laravel 12.
-Tolong jelaskan cara membuat CRUD sederhana untuk data Mahasiswa
-menggunakan Migration, Model, dan Controller resource.
+### 1. Clone Repository
+```bash
+git clone https://github.com/ibraiiian/MK-PWL-modul1.git
+cd MK-PWL-modul1
 ```
 
+### 2. Install Dependencies
+Install library PHP dan aset Frontend:
+```bash
+composer install
+npm install
 ```
-Saya mendapatkan error 'Add [nim] to fillable property to allow mass assignment'.
-Apa maksud error tersebut dan bagaimana cara memperbaikinya?
+
+### 3. Konfigurasi Environment
+Duplikasi file `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
+Buka file `.env` dan sesuaikan koneksi database:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_mahasiswa  # Pastikan database ini sudah dibuat di MySQL
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-### 4️⃣ Catatan Etika Penggunaan AI
+### 4. Generate Key & Migration
+```bash
+php artisan key:generate
+php artisan migrate
+```
 
-* AI digunakan sebagai **alat bantu belajar**, bukan untuk menyalin seluruh kode
-* Kode hasil referensi AI dipahami dan diketik ulang secara mandiri
-* Mahasiswa tetap bertanggung jawab atas logika dan hasil akhir program
+### 5. Jalankan Project
+Anda perlu menjalankan **dua terminal** secara bersamaan:
+
+**Terminal 1 (Laravel Server):**
+```bash
+php artisan serve
+```
+
+**Terminal 2 (Vite Dev Server - untuk CSS/JS):**
+```bash
+npm run dev
+```
+
+Akses aplikasi di browser:
+👉 **http://127.0.0.1:8000**
 
 ---
 
-## 📝 Catatan Akademik
+## 👨‍💻 Akun Demo (Opsional)
 
-> AI (DeepSeek) digunakan sebagai *kopilot pembelajaran*. Seluruh implementasi dilakukan dengan pemahaman mandiri terhadap konsep Laravel, MVC, dan CRUD.
-
----
-
-## 👨‍🎓 Identitas
-
-* **Nama**: Ibrahim Bahaly
-* **NIM**: 43240381
-* **Mata Kuliah**: Pemrograman Web Lanjut
-* **Framework**: Laravel 12
+Untuk menguji fitur **Custom Middleware** (Hapus Mahasiswa), daftarkan akun dengan email kampus:
+*   **Email**: `admin@ikmi.ac.id` (Bisa hapus data)
+*   **Email Lain**: `user@gmail.com` (Tidak bisa hapus data - Error 403)
 
 ---
 
-✨ *Project ini dibuat untuk keperluan pembelajaran dan praktikum akademik.*
+## 📂 Struktur Project
+
+*   `app/Models`: Definisi Model (`Mahasiswa`, `MataKuliah`, `User`).
+*   `app/Http/Controllers`: Logika aplikasi (`MahasiswaController`, `MatakuliahController`).
+*   `app/Http/Middleware`: Middleware kustom (`IkmiEmailOnly`).
+*   `resources/views`: Tampilan antarmuka (`dashboard`, `mahasiswa/*`, `mata_kuliah/*`).
+*   `routes/web.php`: Definisi jalur URL aplikasi.
+*   `database/migrations`: Skema database.
+
+---
+
+## 📝 Credits
+
+*   **Pengembang**: Ibrahim Bahaly (43240381)
+*   **Mata Kuliah**: Pemrograman Web Lanjut
+*   **Dosen Pengampu**: Bpk. Roni Nunu Nugraha
+
+---
+
+*Dibuat dengan ❤️ menggunakan Laravel 12*
