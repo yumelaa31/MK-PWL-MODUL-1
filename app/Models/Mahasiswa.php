@@ -15,10 +15,16 @@ class Mahasiswa extends Model
         'nama',
         'kelas',
         'matakuliah_id',
+        'user_id',
     ];
 
     public function matakuliah()
     {
         return $this->belongsTo(MataKuliah::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
     }
 }

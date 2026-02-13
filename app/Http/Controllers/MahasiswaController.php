@@ -14,6 +14,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mahasiswas = Mahasiswa::all();
+
         return view('mahasiswa.index', compact('mahasiswas'));
     }
 
@@ -23,6 +24,7 @@ class MahasiswaController extends Controller
     public function create()
     {
         $data_mk = MataKuliah::all();
+
         return view('mahasiswa.create', compact('data_mk'));
     }
 
@@ -35,13 +37,15 @@ class MahasiswaController extends Controller
             'nim' => 'required|unique:mahasiswas',
             'nama' => 'required',
             'kelas' => 'required',
-            'matakuliah' => 'required',
+            'matakuliah_id' => 'required|exists:mata_kuliahs,id',
         ]);
 
-        Mahasiswa::create($request->all());
+        Mahasiswa::create(array_merge($request->all(), [
+            'user_id' => auth()->id(),
+        ]));
+
         return redirect()->route('mahasiswa.index');
     }
-
 
     /**
      * Display the specified resource.
@@ -49,6 +53,7 @@ class MahasiswaController extends Controller
     public function show(string $id)
     {
         $mahasiswa = Mahasiswa::find($id);
+
         return view('mahasiswa.show', compact('mahasiswa'));
     }
 
@@ -58,7 +63,9 @@ class MahasiswaController extends Controller
     public function edit(string $id)
     {
         $mahasiswa = Mahasiswa::find($id);
-        return view('mahasiswa.edit', compact('mahasiswa'));
+        $data_mk = MataKuliah::all();
+
+        return view('mahasiswa.edit', compact('mahasiswa', 'data_mk'));
     }
 
     /**
@@ -67,14 +74,15 @@ class MahasiswaController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nim' => 'required|unique:mahasiswas,nim,' . $id,
+            'nim' => 'required|unique:mahasiswas,nim,'.$id.',nim',
             'nama' => 'required',
             'kelas' => 'required',
-            'matakuliah' => 'required',
+            'matakuliah_id' => 'required|exists:mata_kuliahs,id',
         ]);
 
         $mahasiswa = Mahasiswa::find($id);
         $mahasiswa->update($request->all());
+
         return redirect()->route('mahasiswa.index');
     }
 
@@ -85,6 +93,7 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::find($id);
         $mahasiswa->delete();
+
         return redirect()->route('mahasiswa.index');
     }
 }

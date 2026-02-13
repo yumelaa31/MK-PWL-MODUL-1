@@ -10,7 +10,7 @@ class MataKuliah extends Model
         'kode',
         'nama',
         'sks',
-        'dosen'
+        'dosen',
     ];
 
     public function mahasiswas()
@@ -18,4 +18,3 @@ class MataKuliah extends Model
         return $this->hasMany(Mahasiswa::class, 'matakuliah_id');
     }
 }
-
