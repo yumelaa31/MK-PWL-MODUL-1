@@ -1,128 +1,95 @@
-# 📘 Laravel 12 – Sistem Informasi Akademik (SIAKAD)
+🎓 Portal Akademik (SIAKAD) – NextGen Laravel 12
+Selamat datang di repositori Sistem Informasi Akademik. Project ini merupakan aplikasi manajemen data perkuliahan yang dirancang menggunakan Laravel 12 sebagai mesin utamanya. Fokus pengembangan terletak pada efisiensi pengelolaan data Mahasiswa dan Mata Kuliah melalui pendekatan Clean Code dan arsitektur MVC (Model-View-Controller) yang modern.
 
-Project ini adalah **Sistem Informasi Akademik Sederhana** yang dibangun menggunakan **Laravel 12**. Project ini mencakup manajemen data Mahasiswa dan Mata Kuliah dengan fitur lengkap CRUD, Otentikasi (Login/Register), dan pelaporan sederhana melalui Dashboard.
+⚡ Keunggulan Sistem
+🛡️ Autentikasi & Proteksi Berlapis
+Secure Access: Sistem login dan registrasi terintegrasi menggunakan Laravel Breeze.
 
-Project ini dikembangkan sebagai bagian dari praktikum **Pemrograman Web Lanjut** dengan fokus pada Clean Code, MVC Pattern, dan Modern UI.
+Smart Middleware (IkmiEmailOnly): Mekanisme validasi khusus yang membatasi otoritas penghapusan data. Hanya pengguna dengan domain email @ikmi.ac.id yang diizinkan melakukan aksi destruktif (Delete).
 
----
+Route Guard: Seluruh modul inti diproteksi oleh middleware auth untuk menjamin privasi data.
 
-## ✨ Fitur Utama
+📊 Dashboard Monitoring
+Visualisasi data ringkas mengenai statistik jumlah mahasiswa dan distribusi mata kuliah.
 
-### 1. 🔐 Otentikasi & Keamanan
-*   **Login & Register** menggunakan **Laravel Breeze**.
-*   **Custom Middleware** (`IkmiEmailOnly`): Membatasi fitur hapus mahasiswa hanya untuk email berakhiran `@ikmi.ac.id`.
-*   Proteksi Route dengan middleware `auth`.
+Antarmuka responsif dan bersih dengan dukungan Tailwind CSS.
 
-### 2. 📊 Dashboard Interaktif
-*   Ringkasan total **Mahasiswa**.
-*   Ringkasan total **Mata Kuliah**.
-*   Tampilan modern dengan **Tailwind CSS**.
+📁 Modul Mahasiswa
+Operasi CRUD (Create, Read, Update, Delete) yang dinamis.
 
-### 3. 🎓 Manajemen Mahasiswa (CRUD)
-*   Menampilkan daftar mahasiswa dengan pencarian & pagination.
-*   Tambah, Edit, dan Hapus data mahasiswa.
-*   Relasi ke Mata Kuliah (One-to-Many).
-*   Validasi input yang ketat (NIM unik, field wajib isi).
-*   Pencatatan otomatis `user_id` penginput data.
+Fitur pencarian instan dan navigasi pagination.
 
-### 4. 📚 Manajemen Mata Kuliah (CRUD)
-*   Kelola data Mata Kuliah (Kode, Nama, SKS, Dosen).
-*   Fitur `Show Details`: Melihat daftar mahasiswa yang mengambil mata kuliah tertentu.
-*   Indikator jumlah mahasiswa per mata kuliah.
+Relasi basis data yang kuat antara Mahasiswa dan Mata Kuliah.
 
----
+Validasi data otomatis untuk mencegah duplikasi NIM.
 
-## 🛠️ Teknologi yang Digunakan
+📖 Katalog Mata Kuliah
+Manajemen detail perkuliahan (SKS, Kode, dan Dosen Pengampu).
 
-*   **Backend**: Laravel 12 (PHP 8.2+)
-*   **Frontend**: Blade Templates + **Tailwind CSS**
-*   **Database**: MySQL
-*   **Auth**: Laravel Breeze
-*   **Tools**: VS Code, Composer, NPM, Laragon/XAMPP
+Deep Insight: Melihat daftar mahasiswa yang terdaftar di setiap mata kuliah secara spesifik.
 
----
+🛠️ Stack Teknologi
+Core: Laravel 12 (PHP 8.2+)
 
-## 🚀 Cara Instalasi
+UI Engine: Blade Templates & Tailwind CSS
 
-Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
+Persistence: MySQL Database
 
-### 1. Clone Repository
-```bash
+Security: Laravel Breeze (Breeze Authentication)
+
+Development Tools: Composer, NPM, Vite
+
+⚙️ Panduan Instalasi Lokal
+Siapkan lingkungan pengembangan Anda (XAMPP/Laragon) dan ikuti langkah berikut:
+
+1. Replikasi Repositori
+Bash
 git clone https://github.com/ibraiiian/MK-PWL-modul1.git
 cd MK-PWL-modul1
-```
+2. Setup Dependensi
+Pasang semua library PHP dan paket frontend yang diperlukan:
 
-### 2. Install Dependencies
-Install library PHP dan aset Frontend:
-```bash
+Bash
 composer install
 npm install
-```
+3. Konfigurasi Environment
+Salin file template .env:
 
-### 3. Konfigurasi Environment
-Duplikasi file `.env.example` menjadi `.env`:
-```bash
+Bash
 cp .env.example .env
-```
-Buka file `.env` dan sesuaikan koneksi database:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=db_mahasiswa  # Pastikan database ini sudah dibuat di MySQL
-DB_USERNAME=root
-DB_PASSWORD=
-```
+Sesuaikan detail koneksi database pada file .env (DB_DATABASE, DB_USERNAME, dll).
 
-### 4. Generate Key & Migration
-```bash
+4. Finalisasi Database
+Generate kunci aplikasi dan jalankan migrasi tabel:
+
+Bash
 php artisan key:generate
 php artisan migrate
-```
+5. Deployment Lokal
+Jalankan server Laravel dan compiler aset secara bersamaan di terminal terpisah:
 
-### 5. Jalankan Project
-Anda perlu menjalankan **dua terminal** secara bersamaan:
+Terminal 1: php artisan serve
 
-**Terminal 1 (Laravel Server):**
-```bash
-php artisan serve
-```
+Terminal 2: npm run dev
 
-**Terminal 2 (Vite Dev Server - untuk CSS/JS):**
-```bash
-npm run dev
-```
+Buka browser Anda di: http://127.0.0.1:8000
 
-Akses aplikasi di browser:
-👉 **http://127.0.0.1:8000**
+🧪 Skenario Pengujian (Role Access)
+Untuk mencoba fitur Custom Middleware, Anda bisa mendaftarkan dua akun berbeda:
 
----
+Privileged User: Gunakan email @ikmi.ac.id (Dapat menghapus data).
 
-## 👨‍💻 Akun Demo (Opsional)
+Regular User: Gunakan email umum seperti Gmail (Akses hapus akan ditolak/403).
 
-Untuk menguji fitur **Custom Middleware** (Hapus Mahasiswa), daftarkan akun dengan email kampus:
-*   **Email**: `admin@ikmi.ac.id` (Bisa hapus data)
-*   **Email Lain**: `user@gmail.com` (Tidak bisa hapus data - Error 403)
+🏛️ Organisasi Kode
+app/Models: Blueprint entitas data.
 
----
+app/Http/Controllers: Otak pemrosesan logika bisnis.
 
-## 📂 Struktur Project
+resources/views: Layer presentasi (User Interface).
 
-*   `app/Models`: Definisi Model (`Mahasiswa`, `MataKuliah`, `User`).
-*   `app/Http/Controllers`: Logika aplikasi (`MahasiswaController`, `MatakuliahController`).
-*   `app/Http/Middleware`: Middleware kustom (`IkmiEmailOnly`).
-*   `resources/views`: Tampilan antarmuka (`dashboard`, `mahasiswa/*`, `mata_kuliah/*`).
-*   `routes/web.php`: Definisi jalur URL aplikasi.
-*   `database/migrations`: Skema database.
+routes/web.php: Peta navigasi URL.
 
----
-
-## 📝 Credits
-
-*   **Pengembang**: Ibrahim Bahaly (43240381)
-*   **Mata Kuliah**: Pemrograman Web Lanjut
-*   **Dosen Pengampu**: Bpk. Rudi Kurniawan
-
----
-
-*Dibuat dengan ❤️ menggunakan Laravel 12*
+✍️ Author: YUMELA (43240449)
+📚 Course: Pemrograman Web Lanjut
+👨‍🏫 Instructor: Bpk. Rudi Kurniawan
